@@ -1,0 +1,7 @@
+{
+  "id": "test-plugin",
+  "name": "testPlugin",
+  "description": "Plugin for testing plugin system",
+  "author": "helospark",
+  "version": "1.0.0"
+}
