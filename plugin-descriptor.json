@@ -3,5 +3,5 @@
   "name": "testPlugin",
   "description": "Plugin for testing plugin system",
   "author": "helospark",
-  "version": "1.0.0"
+  "version": "${project.version}"
 }
