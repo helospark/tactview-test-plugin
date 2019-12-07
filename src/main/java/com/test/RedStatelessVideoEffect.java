@@ -56,22 +56,22 @@ public class RedStatelessVideoEffect extends StatelessVideoEffect {
     }
 
     @Override
-    public void initializeValueProvider() {
+    public StatelessEffect cloneEffect(CloneRequestMetadata cloneRequestMetadata) {
+        return new RedStatelessVideoEffect(this, cloneRequestMetadata);
+    }
+
+    @Override
+    protected void initializeValueProviderInternal() {
         shouldDoIt = new BooleanProvider(new MultiKeyframeBasedDoubleInterpolator(1.0));
     }
 
     @Override
-    public List<ValueProviderDescriptor> getValueProviders() {
+    protected List<ValueProviderDescriptor> getValueProvidersInternal() {
         ValueProviderDescriptor shouldDoDescriptor = ValueProviderDescriptor.builder()
                 .withKeyframeableEffect(shouldDoIt)
                 .withName("Should do")
                 .build();
         return List.of(shouldDoDescriptor);
-    }
-
-    @Override
-    public StatelessEffect cloneEffect(CloneRequestMetadata cloneRequestMetadata) {
-        return new RedStatelessVideoEffect(this, cloneRequestMetadata);
     }
 
 }
