@@ -29,7 +29,7 @@ public class RedStatelessVideoEffect extends StatelessVideoEffect {
 
     public RedStatelessVideoEffect(RedStatelessVideoEffect redStatelessVideoEffect, CloneRequestMetadata cloneRequestMetadata) {
         super(redStatelessVideoEffect, cloneRequestMetadata);
-        ReflectionUtil.copyOrCloneFieldFromTo(redStatelessVideoEffect, this);
+        ReflectionUtil.copyOrCloneFieldFromTo(redStatelessVideoEffect, this, cloneRequestMetadata);
     }
 
     public RedStatelessVideoEffect(JsonNode node, LoadMetadata loadMetadata, IndependentPixelOperation independentPixelOperation) {
@@ -48,7 +48,7 @@ public class RedStatelessVideoEffect extends StatelessVideoEffect {
             });
         } else {
             independentPixelOperation.executePixelTransformation(result.getWidth(), result.getHeight(), (x, y) -> {
-                result.copyColorFrom(request.getCurrentFrame(), x, y, x, y);;
+                result.copyColorFrom(request.getCurrentFrame(), x, y, x, y);
             });
         }
 
