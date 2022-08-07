@@ -41,7 +41,7 @@ public class RedStatelessVideoEffect extends StatelessVideoEffect {
     public ReadOnlyClipImage createFrame(StatelessEffectRequest request) {
         ClipImage result = ClipImage.sameSizeAs(request.getCurrentFrame());
 
-        if (shouldDoIt.getValueAt(request.getEffectPosition())) {
+        if (shouldDoIt.getValueAt(request.getEffectPosition(), request.getEvaluationContext())) {
             independentPixelOperation.executePixelTransformation(result.getWidth(), result.getHeight(), (x, y) -> {
                 result.setRed(255, x, y);
                 result.setAlpha(255, x, y);
